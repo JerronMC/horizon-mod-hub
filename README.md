@@ -3,15 +3,15 @@
 Static site for GitHub Pages. Upload every file in this zip to the repo root (keep `.nojekyll`).
 Settings > Pages > Deploy from branch > main / root.
 
-## Edit in config.js
-- `launch.package`: the Android package name of Horizon Android. Set it for a real one-tap launch.
-  Without it the Launch button tries `horizon://open` and shows an install help dialog if nothing opens.
-- `launch.apk`: where people get the app.
-- `featured`: how many Horizon registry mods to show (15).
-- `registryIndex`: the public Horizon mods index, read live in each visitor's browser.
+## Files you may edit
+- `config.js`: Launch settings (Horizon Android v1.0.1 package, APK link) and registry links.
+- `mods-data.js`: snapshot of playhorizon.dev/mods (164 projects, Nov 2026). One mod per line.
+
+## Launch button
+Opens Horizon Android with `package` from `config.js` (`com.goydevv.horizon`, inferred from the app's file provider).
+If it does not open the app, find the real package name (adb: `pm list packages | grep -i horizon`) and fix it.
 
 ## Notes
-- Registry mods are listed with credit and download from their original release links; nothing is re-hosted.
-- Accounts, posts and settings are saved in each visitor's own browser (IndexedDB), so community posts are
-  only visible on the device that made them. A shared site needs a backend (Supabase / Firebase).
-- Logo: `logo.png` (the official Horizon logo you supplied).
+- Registry mods are listed with credit; "View" opens the mod's page on playhorizon.dev. Nothing is re-hosted.
+- Icons load from horizon-rust.github.io/horizon-mods/icons (the registry's own icons).
+- Accounts, posts and settings are saved in each visitor's browser only (IndexedDB).
